@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block page_title %}The PageRank Algorithm{% endblock %}
+{% block body %}
+    {{ super() }}
+    <div id="ds-container">
+        <div>
+            <h3>Dataset: Disease-disease network</h3>
+            <p>This is disease-disease network that contains information on relationships between inherited, developmental, and acquired human diseases. Nodes represent diseases and edges represent associations between them. Associations are recorded from a clinical perspective of location (e.g., brain glioblastoma multiforme is a brain glioma, and brain glioma is a brain cancer) and disease etiology (e.g., Brill-Zinsser disease is a epidemic typhus, and epidemic typhus is a typhus).
+            </p>
+            <div class="row">
+                <div id="ds-nodes-container">
+                <h4>Nodes</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:40px;border-right: 1px solid gray;">#</th>
+                            <th>Node (Disease)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for idx, node in nodes %}
+                            <tr>
+                                <td style="border-right: 1px solid gray;">{{ idx }}</td>
+                                <td>{{ node }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="ds-edges-container">
+                <h4>Edges</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:40px;border-right: 1px solid gray;">#</th>
+                            <th>Disease D1</th>
+                            <th>Disease D2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for idx, edge in edges %}
+                            <tr>
+                                <td style="border-right: 1px solid gray;">{{ idx }}</td>
+                                <td>{{ edge[0] }}</td>
+                                <td>{{ edge[1] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            
+            
+        </div>
+        <div id="ds-pageranks-container">
+            <h4>PageRank results:</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:40px;border-right: 1px solid gray;">#</th>
+                        <th>Node N</th>
+                        <th>PageRank PR(N)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for idx, pr in pageranks %}
+                        <tr>
+                            <td style="border-right: 1px solid gray;">{{ idx }}</td>
+                            <td>{{ nodes2[idx] }}</td>
+                            <td>{{ pr }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>    
+    </div>
+    
+{% endblock %}

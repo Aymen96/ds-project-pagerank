@@ -1,0 +1,7 @@
+nodeA,nodeB
+nodeB,nodeC
+nodeB,nodeD
+nodeC,nodeA
+nodeC,nodeD
+nodeD,nodeA
+nodeD,nodeB
